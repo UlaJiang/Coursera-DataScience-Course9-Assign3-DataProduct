@@ -1,0 +1,41 @@
+---
+title: "Prediction of A Diamond Price"
+author: "Ula Jiang"
+date: "16 May 2018"
+output: ioslides_presentation
+---
+
+
+## Executive Summary
+
+- This project introduces a prediction data product. The dataset is "diamond" from "UsingR" package, with 48 observations about the carat of each diamond and its related price.  
+- This project shows the relationship between the carat of a diamond and its price.
+
+
+## Functionality
+
+1. Make a plot of the 48 observations in the dataset, and then find a linear regression model between the price and carat of a diamond.  
+2. Plot the fitted line to show the prediction of the price of a diamond with an unseen carat.
+
+## Detailed Data in "diamond" Dataset
+The data in "diamond" dataset is shown as below. We can see there are only two colunms: carat and price. 
+```{r, include=FALSE}
+library(UsingR)
+data("diamond")
+```
+```{r, echo=TRUE, comment=""}
+head(diamond)
+```
+
+## Plot Observed Data and Fitted Line
+
+```{r, echo=FALSE, fig.align='center'}
+model <- lm(price ~ carat, data = diamond)
+plot(diamond$carat, diamond$price, 
+         xlab = "Carat of a Diamond",
+         ylab = "Price (in dollar $)", 
+         xlim = c(0.10, 0.40),
+         ylim = c(100, 1250))
+abline(model, col = "red", lwd = 2)
+```
+
